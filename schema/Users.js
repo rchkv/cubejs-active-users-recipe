@@ -1,21 +1,7 @@
 cube(`Users`, {
   sql: `SELECT * FROM public.users`,
-  
-  preAggregations: {
-    // Pre-Aggregations definitions go here
-    // Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started  
-  },
-  
-  joins: {
-    
-  },
-  
-  measures: {
-    count: {
-      type: `count`,
-      drillMembers: [id, createdAt]
-    },
 
+  measures: {
     monthlyActiveUsers: {
       sql: `last_name`,
       type: `countDistinct`,
