@@ -3,7 +3,7 @@ cube(`Users`, {
 
   measures: {
     monthlyActiveUsers: {
-      sql: `last_name`,
+      sql: `id`,
       type: `countDistinct`,
       rollingWindow: {
         trailing: `30 day`,
@@ -12,7 +12,7 @@ cube(`Users`, {
     },
 
     weeklyActiveUsers: {
-      sql: `last_name`,
+      sql: `id`,
       type: `countDistinct`,
       rollingWindow: {
         trailing: `7 day`,
@@ -21,7 +21,7 @@ cube(`Users`, {
     },
 
     dailyActiveUsers: {
-      sql: `last_name`,
+      sql: `id`,
       type: `countDistinct`,
       rollingWindow: {
         trailing: `1 day`,
@@ -29,13 +29,12 @@ cube(`Users`, {
       },
     },
     
-    dauToMau: {
-      title: `DAU to MAU`,
-      sql: `100.000 * ${dailyActiveUsers} / NULLIF(${monthlyActiveUsers}, 0)`,
+    wauToMau: {
+      title: `WAU to MAU`,
+      sql: `100.000 * ${weeklyActiveUsers} / NULLIF(${monthlyActiveUsers}, 0)`,
       type: `number`,
       format: `percent`,
     },
-
   },
   
   dimensions: {
@@ -45,16 +44,9 @@ cube(`Users`, {
       primaryKey: true
     },
 
-    lastname: {
-      sql: `last_name`,
-      type: `string`
-    },
-
     createdAt: {
       sql: `created_at`,
       type: `time`
     }
   },
-  
-  dataSource: `default`
 });
