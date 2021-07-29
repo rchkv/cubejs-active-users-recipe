@@ -28,6 +28,14 @@ cube(`Users`, {
         offset: `start`,
       },
     },
+    
+    dauToMau: {
+      title: `DAU to MAU`,
+      sql: `100.000 * ${dailyActiveUsers} / NULLIF(${monthlyActiveUsers}, 0)`,
+      type: `number`,
+      format: `percent`,
+    },
+
   },
   
   dimensions: {
