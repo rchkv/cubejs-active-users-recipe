@@ -6,6 +6,14 @@ services:
     image: cubejs/cube:latest
     ports:
       - 4000:4000
-    env_file: .env
+    environment: 
+      - CUBEJS_DB_HOST=demo-db.cube.dev
+      - CUBEJS_DB_PORT=5432
+      - CUBEJS_DB_NAME=ecom
+      - CUBEJS_DB_USER=cube
+      - CUBEJS_DB_PASS=12345
+      - CUBEJS_DB_TYPE=postgres
+      - CUBEJS_API_SECRET=9a79009ccf152b0bbe11721e37493824b0d5d4d1eff5fbfa347642c87982f3e25c1ce204f615d405f0ebff421c22ffc857c4cde3665249e00d9dcb9aa96e7c22
+      - CUBEJS_DEV_MODE=true
     volumes:
       - .:/cube/conf
