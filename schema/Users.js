@@ -1,6 +1,7 @@
 cube(`Users`, {
   sql: `SELECT * FROM public.users`,
 
+  // start part: usersSchema
   measures: {
     monthlyActiveUsers: {
       sql: `id`,
@@ -36,6 +37,8 @@ cube(`Users`, {
       format: `percent`,
     },
   },
+  
+  // end part: usersSchema
   
   dimensions: {
     id: {
