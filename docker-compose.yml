@@ -1,5 +1,6 @@
 version: '2.2'
 
+# start part: cube
 services:
   cube:
     image: cubejs/cube:latest
@@ -16,3 +17,4 @@ services:
       - CUBEJS_DEV_MODE=true
     volumes:
       - .:/cube/conf
+# end part: cube
